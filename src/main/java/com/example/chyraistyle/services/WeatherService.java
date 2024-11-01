@@ -34,5 +34,6 @@ public class WeatherService {
     }
 
     public Map<String, Object> getWeatherData(String city) {
+        return fetchWeatherData(city); // Вызываем метод для получения погоды для указанного города
     }
 }
