@@ -42,9 +42,8 @@ public class ItemEntity {
 
     @Column(name = "created_at", nullable = false, updatable = false) // Дата создания
     private LocalDateTime createdAt;
-
     @PrePersist
     private void init() {
-        this.createdAt = LocalDateTime.now(); 
+        this.createdAt = LocalDateTime.now();
     }
 }

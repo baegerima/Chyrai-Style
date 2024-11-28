@@ -15,26 +15,26 @@ public class ItemController {
     private ItemRepository itemRepository;
 
     // Получение списка всех вещей
-    @GetMapping
+    @GetMapping("/get-all")
     public List<ItemEntity> getAllItems() {
         return itemRepository.findAll();
     }
 
     // Получение вещи по ID
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ItemEntity getItemById(@PathVariable Long id) {
         return itemRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Item not found with id " + id));
     }
 
     // Создание новой вещи
-    @PostMapping
+    @PostMapping("/create")
     public ItemEntity createItem(@RequestBody ItemEntity item) {
         return itemRepository.save(item);
     }
 
     // Обновление вещи
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ItemEntity updateItem(@PathVariable Long id, @RequestBody ItemEntity updatedItem) {
         ItemEntity item = itemRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Item not found with id " + id));
@@ -47,7 +47,7 @@ public class ItemController {
     }
 
     // Удаление вещи
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteItem(@PathVariable Long id) {
         itemRepository.deleteById(id);
     }
